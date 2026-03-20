@@ -131,13 +131,11 @@ export default function App() {
           href="https://www.buymeacoffee.com/lexoliver"
           target="_blank"
           rel="noreferrer"
-          style={{ display: 'flex', justifyContent: 'center', marginTop: 8 }}
+          style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none' }}
         >
-          <img
-            src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png"
-            alt="Buy Me A Coffee"
-            style={{ height: 45, width: 162 }}
-          />
+          <div style={{ background: '#FF5F5F', color: '#fff', borderRadius: 8, padding: '10px 20px', fontSize: 14, fontWeight: 600, cursor: 'pointer' }}>
+            ☕ Buy me a coffee
+          </div>
         </a>
 
       </div>
