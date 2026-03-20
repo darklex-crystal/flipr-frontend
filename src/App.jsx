@@ -47,21 +47,11 @@ export default function App() {
   return (
     <div style={styles.page}>
       <div style={styles.card}>
+
         <div style={styles.header}>
           <span style={styles.logo}>↑$FLIPR</span>
           <span style={styles.tagline}>QUEL PRIX DEMANDER ?</span>
         </div>
-
-        
-          href="https://www.buymeacoffee.com/lexoliver"
-          target="_blank"
-          rel="noreferrer"
-          style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none' }}
-        >
-          <div style={{ background: '#FF5F5F', color: '#fff', borderRadius: 8, padding: '10px 20px', fontSize: 14, fontWeight: 600, cursor: 'pointer' }}>
-            ☕ Buy me a coffee
-          </div>
-        </a>
 
         <div style={styles.searchRow}>
           <input
@@ -126,9 +116,7 @@ export default function App() {
         {result && (
           <div style={styles.resultBox}>
             <div style={styles.resultPrice}>{result.price_range?.median} $</div>
-            <div style={styles.resultMsg}>
-              Fourchette : {result.price_range?.low}$ – {result.price_range?.high}$
-            </div>
+            <div style={styles.resultMsg}>Fourchette : {result.price_range?.low}$ – {result.price_range?.high}$</div>
             <div style={styles.resultMsg}>{result.confidence_note}</div>
             {result.platforms?.filter(p => !p.disabled).map(p => (
               <div key={p.platform} style={{ ...styles.resultMsg, marginTop: 6 }}>
@@ -137,6 +125,14 @@ export default function App() {
             ))}
           </div>
         )}
+
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <a href="https://www.buymeacoffee.com/lexoliver" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
+            <div style={{ background: '#FF5F5F', color: '#fff', borderRadius: 8, padding: '10px 20px', fontSize: 14, fontWeight: 600, cursor: 'pointer' }}>
+              ☕ Buy me a coffee
+            </div>
+          </a>
+        </div>
 
       </div>
     </div>
