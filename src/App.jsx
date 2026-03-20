@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 
 const CONDITIONS = [
   { id: 'mauvais', emoji: '💀', label: 'MAUVAIS' },
@@ -22,23 +22,6 @@ export default function App() {
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-  const bmcRef = useRef(null)
-
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.src = 'https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js'
-    script.setAttribute('data-name', 'bmc-button')
-    script.setAttribute('data-slug', 'lexoliver')
-    script.setAttribute('data-color', '#FF5F5F')
-    script.setAttribute('data-emoji', '')
-    script.setAttribute('data-font', 'Cookie')
-    script.setAttribute('data-text', 'Buy me a coffee')
-    script.setAttribute('data-outline-color', '#000000')
-    script.setAttribute('data-font-color', '#ffffff')
-    script.setAttribute('data-coffee-color', '#FFDD00')
-    script.async = true
-    if (bmcRef.current) bmcRef.current.appendChild(script)
-  }, [])
 
   const handleSearch = async () => {
     if (!query.trim()) return
@@ -144,7 +127,18 @@ export default function App() {
           </div>
         )}
 
-        <div ref={bmcRef} style={{ display: 'flex', justifyContent: 'center', marginTop: 8 }} />
+        
+          href="https://www.buymeacoffee.com/lexoliver"
+          target="_blank"
+          rel="noreferrer"
+          style={{ display: 'flex', justifyContent: 'center', marginTop: 8 }}
+        >
+          <img
+            src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png"
+            alt="Buy Me A Coffee"
+            style={{ height: 45, width: 162 }}
+          />
+        </a>
 
       </div>
     </div>
