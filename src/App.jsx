@@ -52,6 +52,17 @@ export default function App() {
           <span style={styles.tagline}>QUEL PRIX DEMANDER ?</span>
         </div>
 
+        
+          href="https://www.buymeacoffee.com/lexoliver"
+          target="_blank"
+          rel="noreferrer"
+          style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none' }}
+        >
+          <div style={{ background: '#FF5F5F', color: '#fff', borderRadius: 8, padding: '10px 20px', fontSize: 14, fontWeight: 600, cursor: 'pointer' }}>
+            ☕ Buy me a coffee
+          </div>
+        </a>
+
         <div style={styles.searchRow}>
           <input
             style={styles.input}
@@ -126,17 +137,6 @@ export default function App() {
             ))}
           </div>
         )}
-
-        
-          href="https://www.buymeacoffee.com/lexoliver"
-          target="_blank"
-          rel="noreferrer"
-          style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none' }}
-        >
-          <div style={{ background: '#FF5F5F', color: '#fff', borderRadius: 8, padding: '10px 20px', fontSize: 14, fontWeight: 600, cursor: 'pointer' }}>
-            ☕ Buy me a coffee
-          </div>
-        </a>
 
       </div>
     </div>
