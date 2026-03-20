@@ -32,7 +32,7 @@ export default function App() {
      const res = await fetch('https://flipr-backend-czf2.onrender.com/price', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query, condition, delay, paid: paid || 0 }),
+        body: JSON.stringify({ query, condition, speed: delay, paid_price: paid ? Number(paid) : null }),
       })
       const data = await res.json()
       if (data.error) setError(data.error)
