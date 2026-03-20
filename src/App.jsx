@@ -118,11 +118,19 @@ export default function App() {
         {loading && <div style={styles.info}>Analyse en cours...</div>}
         {error && <div style={styles.errorBox}>⚠ {error}</div>}
         {result && (
-          <div style={styles.resultBox}>
-            <div style={styles.resultPrice}>{result.price} $</div>
-            {result.message && <div style={styles.resultMsg}>{result.message}</div>}
-          </div>
-        )}
+  <div style={styles.resultBox}>
+    <div style={styles.resultPrice}>{result.price_range?.median} $</div>
+    <div style={styles.resultMsg}>
+      Fourchette : {result.price_range?.low}$ – {result.price_range?.high}$
+    </div>
+    <div style={styles.resultMsg}>{result.confidence_note}</div>
+    {result.platforms?.filter(p => !p.disabled).map(p => (
+      <div key={p.platform} style={{...styles.resultMsg, marginTop: 6}}>
+        {p.platform.toUpperCase()} → {p.list_price}$ ({p.fee_rate})
+      </div>
+    ))}
+  </div>
+)}
       </div>
     </div>
   )
