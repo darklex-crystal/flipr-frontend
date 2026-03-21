@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 const CONDITIONS = [
   { id: 'mauvais', emoji: '💀', label: 'MAUVAIS' },
@@ -22,6 +22,16 @@ export default function App() {
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [preview, setPreview] = useState(null)
+  const fileRef = useRef(null)
+
+  const handlePhoto = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = (ev) => setPreview(ev.target.result)
+    reader.readAsDataURL(file)
+  }
 
   const handleSearch = async () => {
     if (!query.trim()) return
@@ -61,9 +71,21 @@ export default function App() {
             onChange={e => setQuery(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handleSearch()}
           />
-          <button style={styles.iconBtn}>📷</button>
+          <button style={styles.iconBtn} onClick={() => fileRef.current.click()}>📷</button>
+          <input
+            ref={fileRef}
+            type="file"
+            accept="image/*"
+            capture="environment"
+            style={{ display: 'none' }}
+            onChange={handlePhoto}
+          />
           <button style={styles.goBtn} onClick={handleSearch}>→</button>
         </div>
+
+        {preview && (
+          <img src={preview} alt="photo" style={{ width: '100%', borderRadius: 8, maxHeight: 160, objectFit: 'cover' }} />
+        )}
 
         <div style={styles.section}>
           <div style={styles.sectionLabel}>ÉTAT</div>
